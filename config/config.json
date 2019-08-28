@@ -1,0 +1,26 @@
+{
+"development": {
+    "username":"root",
+    "password":"Imthebest@30",
+    "database":"eatDaBurger",
+    "host":"local host",
+    "port":8000,
+    "dialect":"mysql"
+},
+"test":{
+"username":"root",
+    "password":"Imthebest@30",
+    "database":"eatDaBurger",
+    "host":"local host",
+    "port":8000,
+    "dialect":"mysql"
+},
+"production":{
+    "username":"root",
+    "password":"Imthebest@30",
+    "database":"eatDaBurger",
+    "host":"local host",
+    "port":8000,
+    "dialect":"mysql"
+}
+}
