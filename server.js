@@ -5,6 +5,11 @@ var express = require("express");
 var app = express();
 var PORT = process.env.PORT || 8080;
 
+var exphbs = require("express-handlebars");
+
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
+
 // Requiring our models for syncing
 var db = require("./models");
 
@@ -15,8 +20,10 @@ app.use(express.json());
 // Static directory
 app.use(express.static("public"));
 
+
 // Routes
 // =============================================================
+require("./routes/html-routes.js")(app);
 require("./routes/api-routes.js")(app);
 
 // Syncing our sequelize models and then starting our Express app
