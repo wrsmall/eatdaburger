@@ -1,10 +1,12 @@
-$(function () {
-  $(".Eat-Burger").on("click", function (event) {
+$(document).ready(function(){
+  $(".eatBurger").click(function (event) {
+    event.preventDefault();
     var id = $(this).data("id");
-    var eatenState = $(this).data("newsleep");
+    console.log(id);
+    
 
     var burgerEaten = {
-      isEaten: eatenState
+      isEaten: true
     };
 
     // Send the PUT request.
@@ -16,17 +18,18 @@ $(function () {
         console.log("changed sleep to", burgerEaten);
         // Reload the page to get the updated list
         location.reload();
-      }
-    );
+      });
   });
 
-  $(".make-burger").on("submit", function (event) {
+  $("#makeBurger").click(function (event) {
     // Make sure to preventDefault on a submit event.
     event.preventDefault();
+    console.log("click");
 
     var newBurger = {
       name: $("#burg").val().trim(),
     };
+    console.log(newBurger);
 
     // Send the POST request.
     $.ajax("/api/burgers", {
