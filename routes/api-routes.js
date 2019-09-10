@@ -3,6 +3,12 @@ var db = require("../models");
 // Routes
 // =============================================================
 module.exports = function (app) {
+  app.get("/", function (req, res) {
+    db.Burger.findAll({}).then(function(data){
+      console.log(data);
+      res.render("index", {burgers:data});
+    });
+  });
   
     // POST route for saving a new todo. You can create a todo using the data on req.body
     app.post("/api/burgers", function (req, res) {
