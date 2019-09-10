@@ -1,26 +1,16 @@
 var path = require("path");
+var db = require("../models");
 
 module.exports = function (app) {
 
 
 
   app.get("/", function (req, res) {
-    res.render("index");
+    db.Burger.findAll({}).then(function(data){
+      console.log(data);
+      res.render("index", {burgers:data});
+    });
   });
 
-
-  app.get("/cms", function (req, res) {
-    res.sendFile(path.join(__dirname, "../public/cms.html"));
-  });
-
-
-  app.get("/blog", function (req, res) {
-    res.sendFile(path.join(__dirname, "../public/blog.html"));
-  });
-
-
-  app.get("/authors", function (req, res) {
-    res.sendFile(path.join(__dirname, "../public/author-manager.html"));
-  });
 
 };

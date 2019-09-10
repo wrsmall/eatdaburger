@@ -4,15 +4,20 @@
     <div class="row">
         <div class="col-lg-6 text-center" id="notEaten">
             <p class="h2 mt-2">Currently availible</p>
-            {{#each burger}}
-            {{#unless isEaten}}
-            {{>burgers/burger-block isEaten=true}}
-            {{/unless}}
+            {{#each burgers}}
+                {{#unless isEaten}}
+                {{> burger/burger-block eat=false}}
+                {{/unless}}
             {{/each}}
         </div>
 
         <div class="col-lg-6 text-center">
             <p class="h2 mt-2">Eaten</p>
+            {{#each burgers}}
+                {{#unless isEaten}}
+                {{> burger/burger-block eat=true}}
+                {{/unless}}
+            {{/each}}
 
         </div>
     </div>
@@ -26,7 +31,7 @@
                         <label for="burg">Burger Name:</label>
                         <input type="text" id="burg" name="name">
                     </div>
-                    <button class="m-3 rounded"type="submit">Make Burger</button>
+                    <button class="m-3 rounded" type="submit">Make Burger</button>
 
                 </form>
             </div>
