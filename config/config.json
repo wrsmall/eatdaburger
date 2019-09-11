@@ -16,11 +16,7 @@
     "dialect":"mysql"
 },
 "production":{
-    "username":"root",
-    "password":"Imthebest@30",
-    "database":"eatDaBurger",
-    "host":"local host",
-    "port":8000,
-    "dialect":"mysql"
+    "use_env_variable": "JAWSDB_URL",
+    "dialect": "mysql"
 }
 }

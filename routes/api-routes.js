@@ -4,39 +4,40 @@ var db = require("../models");
 // =============================================================
 module.exports = function (app) {
   app.get("/", function (req, res) {
-    db.Burger.findAll({}).then(function(data){
+    db.Burger.findAll({}).then(function (data) {
       console.log(data);
-      res.render("index", {burgers:data});
+      res.render("index", { burgers: data });
     });
   });
-  
-    // POST route for saving a new todo. You can create a todo using the data on req.body
-    app.post("/api/burgers", function (req, res) {
-      db.Burger.create(
-        { burgerName: req.body.name,
-          })
-         .then(burgersObject => {
-          res.render("index",burgersObject);;
-      });
-      
-      
-    });
-    app.put("/api/burger/:id", function(req, res) {
-      
 
-    
-      db.Burger.update({
-        isEaten: req.body.isEaten
-      }, 
+  // POST route for saving a new todo. You can create a todo using the data on req.body
+  app.post("/api/burgers", function (req, res) {
+    db.Burger.create(
+      {
+        burgerName: req.body.name,
+      })
+      .then(burgersObject => {
+        res.render("index", burgersObject);;
+      });
+
+
+  });
+  app.put("/api/burger/:id", function (req, res) {
+
+
+
+    db.Burger.update({
+      isEaten: req.body.isEaten
+    },
       {
         where: {
           id: req.params.id
         }
-      }).then( function(result) {
-          res.render("index",result);;
-        
+      }).then(function (result) {
+        res.render("index", result);;
+
       });
-    });
-  
+  });
+
 }
 
